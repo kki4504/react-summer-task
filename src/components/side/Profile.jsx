@@ -21,8 +21,8 @@ const Profile = (profile) => {
       </div>
       {/* icons */}
       <div className='flex mt-7 gap-2'>
-        <FaGithub size={"20"} />
-        <AiFillInstagram size={"20"} />
+        <FaGithub size={"20"} className="cursor-pointer hover:scale-125 transition ease-in-out "/>
+        <AiFillInstagram size={"20"} className="cursor-pointer hover:scale-125 transition ease-in-out "/>
       </div>
     </div>
   );
