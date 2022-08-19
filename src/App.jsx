@@ -1,47 +1,43 @@
 // import logo from './logo.svg';
-import Header from "./components/Header";
-import Side from "./components/side/Side";
-import Main from "./components/main/Main";
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 
+import Header from "./components/Header";
+import Home from "./components/Home/Home";
+import Side from "./components/side/Side";
+import Write from "./components/write/Write";
+import Diary from "./components/diary/Diary";
+import DevNote from "./components/devNote/DevNote";
+import Edit from "./components/write/Edit"
+
+
 const App = () => {
-  const [contents, setContents] = useState([])
+  // const [contents, setContents] = useState([])
   const [profile, setProfile] = useState('');
   useEffect(() => {
-    axios.get("http://localhost:3001/content")
-      .then(res => {
-        setContents(res.data)
-    })
     axios.get("http://localhost:3001/profile")
       .then(res => {
         setProfile(res.data[0]);
     })
   }, [])
   return (
-    <div className="mx-auto max-w-screen-xl bg-gray-100">
+    <div className="mx-auto max-w-screen-xl">
       <header className="py-10">
         <Header />
       </header>
-      <div className='mx-auto my-2 bg-gray-300 flex'>
+      <div className='mx-auto my-2 flex'>
         <Side {...profile} />
-        <Main contents={contents} />
+        <div className="m-2 p-4 w-full">
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/write" element={<Write />} />
+            <Route path="/diary" element={<Diary />} />
+            <Route path="/devnote" element={<DevNote />} />
+            <Route path="/edit/:category/:id" element={<Edit />} />
+          </Routes>
+        </div>
       </div>
-      
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
     </div>
   );
 }

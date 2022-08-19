@@ -1,9 +1,7 @@
-// import { useEffect, useState } from "react";
-// import axios from "axios";
 import { FaGithub } from 'react-icons/fa'
 import { AiFillInstagram } from 'react-icons/ai'
+import "./side.css"
 const Profile = (profile) => {
-  
   return ( 
     <div className="w-56">
       {/* image */}
@@ -21,8 +19,12 @@ const Profile = (profile) => {
       </div>
       {/* icons */}
       <div className='flex mt-7 gap-2'>
-        <FaGithub size={"20"} className="cursor-pointer hover:scale-125 transition ease-in-out "/>
-        <AiFillInstagram size={"20"} className="cursor-pointer hover:scale-125 transition ease-in-out "/>
+        <a href="https://github.com/kki4504">
+          <FaGithub size={"20"} className="icon"/>
+        </a>
+        <a href="https://www.instagram.com/ppang_1">
+          <AiFillInstagram size={"24"} className="icon"/>
+        </a>
       </div>
     </div>
   );
