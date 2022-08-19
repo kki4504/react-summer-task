@@ -2,6 +2,7 @@
 
 구동방법
 ```
+npm i
 npm run server
 npm run start
 ```
